@@ -14,6 +14,12 @@ async function main() {
         return;
     }
 
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+    today.toISOString();
+
+    document.getElementById("datetime").innerText = `${today}`;
+
     const profile = await liff.getProfile();
     const accessToken = await liff.getAccessToken();
 
@@ -82,20 +88,5 @@ async function submitInfo() {
   }
 }
 
-
-async function sendMessageLiff() {
-  try{
-    await liff.sendMessages([
-    {
-      type: "text",
-      text: "發送測試訊息"
-    },
-    ]);
-
-  } catch(err) {
-    console.log("error", err);
-  }
-
-}
 
 main();
